@@ -15,7 +15,7 @@ router.all("*", function(req, res, next) {
 });
 
 router.get('/admin', function(req, res, next) {
-    var admin = "admin";
+    var admin = process.env.SECRET_ADMIN;
     res.cookie('session', admin, { signed: true });
     req.session = admin;
 

@@ -10,6 +10,7 @@ var api = require('./routes/api');
 var session = require('./routes/session');
 
 var app = express();
+require('dotenv').config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +21,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser("my-cookie-secret"));
+app.use(cookieParser(process.env.my_cookie_secret));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session);
