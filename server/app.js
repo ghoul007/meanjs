@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var angular = require('./routes/angular');
 var api = require('./routes/api');
+var session = require('./routes/session');
 
 var app = express();
 
@@ -19,9 +20,10 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser("my-cookie-secret"));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session);
 app.use('/', angular);
 app.use('/api', api);
 
