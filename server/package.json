@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": " forever stopall && forever -e error.log ./bin/www",
-    "test": " nodemon  ./bin/www",
+    "start": "forever -e error.log ./bin/www",
+    "dev": " nodemon  ./bin/www",
     "stop": "forever stopall",
     "debug": "node --inspect --debug-brk ./bin/www"
   },
@@ -15,10 +15,15 @@
     "debug": "~2.6.9",
     "dotenv": "^4.0.0",
     "express": "~4.15.5",
+    "express-session": "^1.15.6",
     "forever": "^0.15.3",
+    "helmet": "^3.9.0",
+    "https": "^1.0.0",
     "jade": "~1.11.0",
+    "jsonapi-serializer": "^3.5.5",
     "morgan": "~1.9.0",
     "nodemon": "^1.12.1",
+    "resource-router-middleware": "^0.7.0",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
