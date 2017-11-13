@@ -4,8 +4,8 @@
     "license": "MIT",
     "scripts": {
         "ng": "ng",
-        "start": " concurrently \"ng serve --proxy-config proxy.dev.json\"  \"node ./server/bin/www \"   ",
-        "build": "ng build && node ./server/bin/www",
+        "start": " concurrently \"ng serve --proxy-config proxy.dev.json\"  \"nodemon ./server/bin/www \"   ",
+        "build": "ng build && forever start ./server/bin/www",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"

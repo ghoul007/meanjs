@@ -5,7 +5,7 @@ var url = "https://jsonplaceholder.typicode.com";
 
 /* GET users listing. */
 router.get("/", function(req, res, next) {
-    res.send("api ...");
+    res.send("api ..");
 });
 
 router.get("/posts", function(req, res, next) {
@@ -18,11 +18,15 @@ router.get("/posts", function(req, res, next) {
         });
 });
 
-// router.get("/:param", function(req, res, next) {
-//     var params = req.params;
-//     var query = req.query;
-//     Object.assign(params, query);
-//     res.json(params);
-// });
+
+router.get('/crash', function(req, res, next) {
+        process.exit(1);
+    })
+    // router.get("/:param", function(req, res, next) {
+    //     var params = req.params;
+    //     var query = req.query;
+    //     Object.assign(params, query);
+    //     res.json(params);
+    // });
 
 module.exports = router;
