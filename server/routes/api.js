@@ -1,6 +1,7 @@
 var express = require("express");
+var morgan = require("morgan");
 var router = express.Router();
-
+var auth = require('../middleware/auth')
 var rest = require('../middleware/rest');
 // var axios = require("axios");
 // var url = "https://jsonplaceholder.typicode.com";
@@ -20,7 +21,7 @@ router.get("/posts", rest.list("posts"))
     //             res.status(500).send(err);
     //         });
     // });
-
+    // router.use('/admin', auth.logger(morgan, "admin.log"), auth.setRole('admin'));
 
 router.get('/crash', function(req, res, next) {
         process.exit(1);

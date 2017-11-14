@@ -14,6 +14,7 @@ router.get('/admin', function(req, res, next) {
 
 router.all("*", function(req, res, next) {
     var hasCookie = req.signedCookies.session;
+    console.log('ddd');
     if (hasCookie) {
         req.session = hasCookie;
     } else {

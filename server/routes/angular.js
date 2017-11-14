@@ -8,8 +8,8 @@ router.use(express.static(angularPath));
 
 /* GET home page. */
 router.get("*", function(req, res, next) {
+    if (req.url.startsWith("/admin")) return next();
     if (req.url.startsWith("/api")) return next();
-    if (req.url.startsWith("/login")) return next();
 
     res.sendFile(path.join(angularPath, "index.html"));
 });
