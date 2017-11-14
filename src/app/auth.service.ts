@@ -1,13 +1,25 @@
-import { Observable } from "rxjs/Rx";
+import { User } from "./User";
+import { BehaviorSubject, Observable } from "rxjs/Rx";
 import { Http, Headers, Response, RequestOptions } from "@angular/http";
 import { Injectable } from "@angular/core";
 import "rxjs/add/operator/map";
 
 @Injectable()
 export class AuthService {
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
 
-  login(username: string, password: string): Promise<any> {
+  }
+
+  private currentUser = new BehaviorSubject<User>(new User());
+  getUser() {
+    return this.currentUser.asObservable();
+  }
+
+  setUser(user) {
+    this.currentUser.next(user);
+  }
+
+  login(username: string, password: string): Promise<User> {
     let headers = new Headers({ "Content-Type": "application/json" });
     let options = new RequestOptions({ headers: headers });
     return this.http
@@ -25,7 +37,7 @@ export class AuthService {
 
         // let userJSON = response.json().data.attributes;
         // let user = new User(userJSON.firstName, userJSON.lastName, userJSON.email);
-        // this.setUser(user);
+        this.setUser(response);
         return response;
       })
       .catch(error => {
