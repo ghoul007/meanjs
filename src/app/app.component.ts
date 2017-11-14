@@ -7,13 +7,5 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = "app";
-  posts: any = [];
-  constructor(private postService: PostService) {}
-
-  public ngOnInit(): void {
-    this.postService.getPosts().subscribe(res => {
-      this.posts = res;
-    });
-  }
+  public ngOnInit(): void {}
 }

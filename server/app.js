@@ -87,7 +87,7 @@ app.use("/admin", function(req, res, next) {
 
 });
 
-app.use("/login", login);
+// app.use("api/login", login);
 app.use("/api", auth.logger(morgan, "api.log"), auth.requireRole('admin'), api);
 app.use("/", angular);
 

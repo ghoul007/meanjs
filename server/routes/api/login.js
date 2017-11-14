@@ -3,9 +3,9 @@ var router = express.Router();
 var JSONAPISerializer = require('jsonapi-serializer').Serializer;
 var users = [{
     id: "1",
-    username: "Nicholas",
-    lastName: "McClay",
-    email: "nmcclay@nickmcclay.com",
+    username: "Ahmed",
+    lastName: "Ghoul",
+    email: "ahmed@test.com",
     password: 'Secret',
     role: 'admin'
 }];
