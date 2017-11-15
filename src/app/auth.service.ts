@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: Http) {
     var token = getToken();
     if (token) {
-       this.setUser(this.decodeUser(token));
+      this.setUser(this.decodeUser(token));
     }
   }
 
@@ -21,7 +21,6 @@ export class AuthService {
   decodeUser(token) {
     let userJSON = this.jwtHelper.decodeToken(token);
     return new User(userJSON.firstName, userJSON.lastName, userJSON.email);
- 
   }
 
   getUser() {
@@ -44,13 +43,9 @@ export class AuthService {
       .map(res => res.json())
       .toPromise()
       .then(response => {
-        // let token = response.json();
-        // let user = this.decodeUserFromToken(token);
-        // this.setUser(user);
-
-        // let userJSON = response.json().data.attributes;
-        // let user = new User(userJSON.firstName, userJSON.lastName, userJSON.email);
-        this.setUser(response);
+        let token = response;
+        let user = this.decodeUser(token);
+        this.setUser(user);
         return response;
       })
       .catch(error => {
@@ -59,8 +54,7 @@ export class AuthService {
       });
   }
 
-
-  logout(){
+  logout() {
     this.setUser(new User());
     deleteToken();
   }

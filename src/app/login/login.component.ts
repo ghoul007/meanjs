@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     console.log(this.model);
     this.auth.login(this.model.username, this.model.password).then(
       res => {
-        console.log("res", res);
+        // console.log("res", res);
 
         this.router.navigate(["/"]);
       },

@@ -7,18 +7,19 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthGuardService {
   constructor(private authService_: AuthService, private router_: Router) {}
-    public canActivate() : Observable<any> {
-      return this.authService_.getUser().map(res => res.username)
-      .take(1)
-        // .subscribe(loginIn => {
-        //   console.log(loginIn);
-        //   if (loginIn.username) {
-        //     return true;
-        //   } else {
-        //     this.router_.navigate(["login"]);
-        //   }
-        // }
-      // ) 
-    }
+
+
+  public canActivate(): Observable<boolean> {
+    return this.authService_.getUser()
+      .map(loginIn => {
+        console.log(loginIn);
+        if (!loginIn.username) {
+          this.router_.navigate(["login"]);
+        } else {
+          return true;
+        }
+      })
+      .take(1);
+  }
 
 }
