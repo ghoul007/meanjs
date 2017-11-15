@@ -21,6 +21,7 @@
     "https": "^1.0.0",
     "jade": "~1.11.0",
     "jsonapi-serializer": "^3.5.5",
+    "jwt-express": "^1.1.0",
     "morgan": "~1.9.0",
     "nodemon": "^1.12.1",
     "resource-router-middleware": "^0.7.0",

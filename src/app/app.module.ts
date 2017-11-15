@@ -1,3 +1,4 @@
+import { JwtModule } from './jwt/jwt.module';
 import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
@@ -19,7 +20,7 @@ const ROOT = [
 ];
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, PostComponent],
-  imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(ROOT) ],
+  imports: [BrowserModule, JwtModule, FormsModule, HttpModule, RouterModule.forRoot(ROOT) ],
   providers: [PostService,AuthService],
   bootstrap: [AppComponent]
 })

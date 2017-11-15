@@ -48,7 +48,9 @@ router.post('/login', login, function(req, res, next) {
         var userJSON = user;
         userJSON.exp = new Date().getTime() + 600;
         // var jwt = res.jwt(userJSON);
-        res.json(user);
+        var jwt = res.jwt(user);
+
+        res.json(jwt.token);
         // var user = req.session.user;
         // res.json(serializer.serialize(user));
     });

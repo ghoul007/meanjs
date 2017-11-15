@@ -13,7 +13,7 @@ var login = require("./routes/login");
 var auth = require("./middleware/auth");
 
 var morgan = require("morgan");
-
+var jwt = require('jwt-express')
 var app = express();
 var sess = require('express-session');
 require("dotenv").config();
@@ -32,8 +32,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.my_cookie_secret));
 app.use(express.static(path.join(__dirname, "public")));
-
-// app.use(session);
+app.use(jwt.init("process.env.jwtSecret", {
+        cookieOptions: { httpOnly: false }
+    }))
+    // app.use(session);
 if (env == 'production') {
     app.use(sess({
         secret: process.env.my_cookie_secret,
