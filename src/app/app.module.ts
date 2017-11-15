@@ -1,3 +1,4 @@
+import { AuthGuardService } from './auth-guard.service';
 import { JwtModule } from './jwt/jwt.module';
 import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
@@ -14,14 +15,14 @@ import { PostComponent } from "./post/post.component";
 
 const ROOT = [
   { path: "", redirectTo:"home", pathMatch:'full' },
-  { path: "home", component: HomeComponent },
+  { path: "home", component: HomeComponent,  canActivate: [AuthGuardService] },
   { path: "login", component: LoginComponent },
-  { path: "post", component: PostComponent }
+  { path: "post", component: PostComponent  }
 ];
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, PostComponent],
   imports: [BrowserModule, JwtModule, FormsModule, HttpModule, RouterModule.forRoot(ROOT) ],
-  providers: [PostService,AuthService],
+  providers: [PostService,AuthService , AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
