@@ -36,7 +36,7 @@ export class AuthService {
     let options = new RequestOptions({ headers: headers });
     return this.http
       .post(
-        "/api/login",
+        "cm/login",
         JSON.stringify({ username: username, password: password }),
         options
       )

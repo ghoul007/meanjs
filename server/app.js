@@ -80,17 +80,18 @@ if (env == 'production') {
 // app.use(helmet());
 
 
-app.use("/admin", function(req, res, next) {
-    req.session["role"] = "admin";
-    req.session.save(function(err) {
-        res.redirect('/');
-    });
+// app.use("/admin", function(req, res, next) {
+//     req.session["role"] = "admin";
+//     req.session.save(function(err) {
+//         res.redirect('/');
+//     });
 
 
-});
+// });
 
-// app.use("api/login", login);
-app.use("/api", auth.logger(morgan, "api.log"), auth.requireRole('admin'), api);
+app.use("/cm", login);
+app.use("/api", auth.logger(morgan, "api.log"), jwt.active(), api);
+// app.use("/api", auth.logger(morgan, "api.log"), auth.requireRole('admin'), api);
 app.use("/", angular);
 
 // catch 404 and forward to error handler
@@ -100,8 +101,18 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+
+
 // error handler
 app.use(function(err, req, res, next) {
+
+    if (err.name == 'JWTExpressError') {
+        // user is unauthorized
+        res.status(401).send(err);
+        // res.render('401', { error: err });
+    } else {
+        next(err);
+    }
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};
