@@ -15,6 +15,7 @@
     "debug": "~2.6.9",
     "dotenv": "^4.0.0",
     "express": "~4.15.5",
+    "express-bearer-token": "^2.1.0",
     "express-session": "^1.15.6",
     "forever": "^0.15.3",
     "helmet": "^3.9.0",
@@ -24,6 +25,7 @@
     "jwt-express": "^1.1.0",
     "morgan": "~1.9.0",
     "nodemon": "^1.12.1",
+    "object.values": "^1.0.4",
     "resource-router-middleware": "^0.7.0",
     "serve-favicon": "~2.4.5"
   },

@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var users = require("./api/login");
 var rest = require("../middleware/rest");
-
+var axios = require('axios');
 
 
 var JSONAPIError = require('jsonapi-serializer').Error;
@@ -16,22 +16,35 @@ var authError = function(message) {
     });
 };
 
+var url = "http://127.0.0.1:8000/api";
+var authenticate = function(username, password, req, res, next) {
+    return axios.post(`${url}/authenticate`, {
+            'email': username,
+            'password': password
+        })
+        .then(function(data) {
+            req.session.user = JSON.parse(data.config.data);
+            req.session.tokenApi = data.data.token
+            next();
+
+        }, function(err) {
+            res.status(401).json(authError('Invalid username or password for user authentication.'));
+        })
+}
+
 var login = function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
-
     console.log("usernae", username, password);
     // debugger
     if (username && password) {
-        var match = users.find(function(user) {
-            return user.username === username && user.password === password;
-        });
-        if (match) {
-            req.session.user = match;
-            next();
-        } else {
-            res.status(401).json(authError('Invalid username or password for user authentication.'));
-        }
+        var match = authenticate(username, password, req, res, next);
+        // if (match) {
+        //     req.session.user = match;
+        //     next();
+        // } else {
+        //     res.status(401).json(authError('Invalid username or password for user authentication.'));
+        // }
     } else {
         res.status(401).json(authError('Must provide username or password for user authentication.'));
     }

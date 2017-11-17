@@ -90,7 +90,7 @@ if (env == 'production') {
 // });
 
 app.use("/cm", login);
-app.use("/api", auth.logger(morgan, "api.log"), jwt.active(), api);
+app.use("/api", auth.logger(morgan, "api.log"), api); //jwt.active(),
 // app.use("/api", auth.logger(morgan, "api.log"), auth.requireRole('admin'), api);
 app.use("/", angular);
 
