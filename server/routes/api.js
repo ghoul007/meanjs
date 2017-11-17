@@ -18,7 +18,7 @@ router.get("/posts", rest.list("posts"))
     // router.get("/movies", rest.list("posts"))
 router.get("/movies", function(req, res, next) {
     const AuthStr = 'Bearer '.concat(req.session.tokenApi);
-    console.log("AuthStr", AuthStr)
+    console.log("=>AuthStr", AuthStr)
     return axios.get(`${url}/user`, { headers: { Authorization: AuthStr } })
         .then(function(data) {
             res.status(200).json(data.data);
@@ -52,12 +52,14 @@ router.post('/list_resource', function(req, res, next) {
     var uuid = req.body.uuid;
     var action = 'list';
 
-    var dat = { 'login': req.user.email };
-    api.setToken(req.user.token);
-    api.setHeaders('login', req.user.email);
 
-
-    console.log('ghoul dat', dat)
+    const AuthStr = 'Bearer '.concat(req.session.tokenApi);
+    console.log("AuthStr", AuthStr)
+    // var dat = { 'login': req.user.email };
+    // api.setToken(req.user.token);
+    api.setHeaders('Authorization', AuthStr );
+    // console.log('ghoul dat', dat)
+console.log(resource);
     if (uuid) {
         action = 'get_by_id';
         api.findResource(res, resource).call(action, null, uuid).then(function(data) {
@@ -65,7 +67,8 @@ router.post('/list_resource', function(req, res, next) {
         });
     } else {
         api.findResource(res, resource).call(action).then(function(data) {
-            res.status(200).send(values(data));
+          console.log('data',data)
+            res.status(200).send(data);
         });
     }
 });

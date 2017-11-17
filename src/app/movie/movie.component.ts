@@ -12,7 +12,7 @@ export class MovieComponent implements OnInit {
 
   ngOnInit() {
     this.movieService.getMovies().subscribe(res => {
-      this.movies = res;
+      this.movies = res.data;
     });
   }
 }

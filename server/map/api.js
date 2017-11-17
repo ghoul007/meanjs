@@ -76,7 +76,8 @@ api.findResource = function(res, resource) {
                 deferred.resolve(null);
             } else if (response.statusCode == 404) {
                 except.resourceNotFoundError(res);
-            } else if (response.badRequestError == 400) {
+            } else if (response.statusCode == 400) {
+              if(resp.body)
                 except.badRequestError(res, resp.body.message);
             } else if (response.statusCode == 409) {
                 except.conflictError(res, resp.body.message);
