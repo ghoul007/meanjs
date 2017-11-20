@@ -55,11 +55,11 @@ router.post('/list_resource', function(req, res, next) {
 
     const AuthStr = 'Bearer '.concat(req.session.tokenApi);
     console.log("AuthStr", AuthStr)
-    // var dat = { 'login': req.user.email };
-    // api.setToken(req.user.token);
-    api.setHeaders('Authorization', AuthStr );
+        // var dat = { 'login': req.user.email };
+        // api.setToken(req.user.token);
+    api.setHeaders('Authorization', AuthStr);
     // console.log('ghoul dat', dat)
-console.log(resource);
+    console.log(resource);
     if (uuid) {
         action = 'get_by_id';
         api.findResource(res, resource).call(action, null, uuid).then(function(data) {
@@ -67,12 +67,86 @@ console.log(resource);
         });
     } else {
         api.findResource(res, resource).call(action).then(function(data) {
-          console.log('data',data)
+            console.log('data', data)
             res.status(200).send(data);
         });
     }
 });
 
+
+/**
+ * Creates a new resource
+ */
+router.post('/create_resource', function(req, res, next) {
+
+    var resource = req.body.resource;
+    var data = req.body.data;
+    var action = 'create';
+    console.log(req.body);
+    /*
+     * delete this comment
+     * you can set headers by using
+     * api.setHeaders('key','value')
+     * */
+    const AuthStr = 'Bearer '.concat(req.session.tokenApi);
+    console.log("AuthStr", AuthStr)
+    api.setHeaders('Authorization', AuthStr);
+
+    api.findResource(res, resource).call(action, data).then(function(data) {
+        res.status(200).send(values(data));
+    });
+});
+
+/**
+ * Update resource
+ */
+router.post('/update_resource', function(req, res, next) {
+
+    var resource = req.body.resource;
+    var uuid = req.body.uuid;
+    var data = req.body.data;
+    var action = 'update';
+    var obj = {};
+
+    obj[uuid] = data;
+
+    /*
+     * delete this comment
+     * you can set headers by using
+     * api.setHeaders('key','value')
+     * */
+    const AuthStr = 'Bearer '.concat(req.session.tokenApi);
+    console.log("AuthStr", AuthStr)
+    api.setHeaders('Authorization', AuthStr);
+    api.findResource(res, resource).call(action, data, uuid).then(function(data) {
+        res.status(200).send(values(data));
+    });
+});
+
+
+
+/**
+ * Delete resource
+ */
+router.post('/delete_resource', function(req, res, next) {
+
+    var resource = req.body.resource;
+    var uuid = req.body.uuid;
+    var action = 'delete';
+
+    /*
+     * delete this comment
+     * you can set headers by using
+     * api.setHeaders('key','value')
+     * */
+    const AuthStr = 'Bearer '.concat(req.session.tokenApi);
+    console.log("AuthStr", AuthStr)
+    api.setHeaders('Authorization', AuthStr);
+
+    api.findResource(res, resource).call(action, null, uuid).then(function(data) {
+        res.status(200).send(values(data));
+    });
+});
 
 
 
