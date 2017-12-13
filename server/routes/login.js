@@ -16,10 +16,10 @@ var authError = function(message) {
     });
 };
 
-var url = "http://127.0.0.1:8000/api";
+var url = "http://127.0.0.1:8000";
 var authenticate = function(username, password, req, res, next) {
     return axios.post(`${url}/authenticate`, {
-            'email': username,
+            'username': username,
             'password': password
         })
         .then(function(data) {

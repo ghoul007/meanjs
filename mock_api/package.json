@@ -1,0 +1,23 @@
+{
+    "name": "ghoul",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": " json-server movies.json --p 8000"
+    },
+    "dependencies": {
+        "casual": "^1.5.1",
+        "fake-product-generator": "^3.0.0",
+        "fs": "^0.0.1-security",
+        "json-server": "^0.12.1",
+        "jsonwebtoken": "^8.1.0",
+        "readable-stream": "^2.1.4"
+    },
+    "devDependencies": {
+        "concat-stream": "^1.5.1",
+        "has": "^1.0.1",
+        "standard": "^5.4.1",
+        "tape": "^4.4.0"
+    }
+}

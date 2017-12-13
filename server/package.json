@@ -6,7 +6,7 @@
     "start": "forever -e error.log ./bin/www",
     "dev": " nodemon  ./bin/www",
     "stop": "forever stopall",
-    "debug": "node --inspect --debug-brk ./bin/www"
+    "debug": "node --inspect --debug-brk  ./bin/www"
   },
   "dependencies": {
     "axios": "^0.17.1",

@@ -20,7 +20,7 @@ export class AuthService {
 
   decodeUser(token) {
     let userJSON = this.jwtHelper.decodeToken(token);
-    return new User(userJSON.firstName, userJSON.lastName, userJSON.email);
+    return new User(userJSON.email, userJSON.password, userJSON.username);
   }
 
   getUser() {
