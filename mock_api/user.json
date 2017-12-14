@@ -1,1 +1,10 @@
-{"authenticate":[{"id":"1","username":"Ahmed","lastName":"Ghoul","email":"ahmed@test.com","password":"Secret","role":"admin"}]}
+{
+    "authenticate": [{
+        "id": "1",
+        "username": "Ahmed",
+        "lastName": "Ghoul",
+        "email": "ahmed@test.com",
+        "password": "Secret",
+        "role": "admin"
+    }]
+}
