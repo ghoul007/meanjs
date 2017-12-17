@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "forever -e error.log ./bin/www",
+    "start": "forever -e ./log/error.log ./bin/www",
     "dev": " nodemon  ./bin/www",
     "stop": "forever stopall",
     "debug": "node --inspect --debug-brk  ./bin/www"

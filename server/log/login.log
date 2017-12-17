@@ -1,0 +1,4 @@
+POST /cm/login 200 (- [object Object] -)
+POST /cm/login 200 ({"username":"Ahmed","password":"Secret"})
+POST /cm/login 200 ({"username":"Ahmed","password":"Secret"})
+POST /cm/login 200 ({"username":"Ahmed","password":"Secret"})

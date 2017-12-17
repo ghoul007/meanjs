@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "start": " json-server movies.json --p 8000"
+        "start": " json-server movies.json  -m middleware.js --p 8000"
     },
     "dependencies": {
         "casual": "^1.5.1",

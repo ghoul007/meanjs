@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var users = require("./api/login");
+// var users = require("./api/login");
 var rest = require("../middleware/rest");
 var axios = require('axios');
 

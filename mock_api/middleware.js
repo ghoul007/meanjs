@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const APP_SECRET = "myappsecret";
+const APP_SECRET = "process.env.jwtSecret";
 const USERNAME = "angus.dickens@example.org";
 const PASSWORD = "secret";
 
@@ -19,16 +19,29 @@ module.exports = function(req, res, next) {
         res.end();
         return;
     } else if ((req.url.startsWith("/product") && req.method != "GET") ||
-        (req.url.startsWith("/orders") && req.method != "POST")) {
+        (req.url.startsWith("/movies") && req.method != "POST")) {
         let token = req.headers["authorization"];
-        if (token != null && token.startsWith("Bearer<")) {
+        console.log(token);
+        if (token != null && token.startsWith("Bearer")) {
+          console.log("-------------");
             token = token.substring(7, token.length - 1);
             try {
-                jwt.verify(token, APP_SECRET);
+              console.log("2",token);
+                // jwt.verify(token, APP_SECRET);
                 next();
                 return;
-            } catch (err) {}
+            } catch (err) {
+              console.log("error",err);
+            }
         }
+
+        var error = new Error(`requires`);
+        res.status(403).json({
+            status: 403,
+            message: error.message,
+            name: error.name
+        });
+
         res.statusCode = 401;
         res.end();
         return;

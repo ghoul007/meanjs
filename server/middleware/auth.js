@@ -16,8 +16,11 @@ module.exports = {
         morgan.token("signedCookies", function(req, res) {
             return req.signedCookies.session;
         });
+        morgan.token("params", function(req, res) {
+            return JSON.stringify(req.body);
+        });
 
-        return morgan(":method :url :status (:role :session :signedCookies)", {
+        return morgan(":method :url :status (:params) :response-time ", {
             stream: adminStream
         });
     },

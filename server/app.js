@@ -5,10 +5,10 @@ var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 
-var angular = require("./routes/angular");
-var api = require("./routes/api");
-// var session = require("./routes/session");
-var login = require("./routes/login");
+var angular = require("./controllers/index.controller");
+var api = require("./controllers/api.controller");
+var login = require("./controllers/login.controller");
+var routes = require("./routes/index.routes");
 
 var auth = require("./middleware/auth");
 
@@ -19,7 +19,8 @@ var sess = require('express-session');
 require("dotenv").config();
 var env = process.env.NODE_ENV || 'development';
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("short"));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -28,8 +29,7 @@ app.set("view engine", "jade");
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cookieParser(process.env.my_cookie_secret));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(jwt.init("process.env.jwtSecret", {
@@ -89,10 +89,7 @@ if (env == 'production') {
 
 // });
 
-app.use("/cm", login);
-app.use("/api", auth.logger(morgan, "api.log"), api); //jwt.active(),
-// app.use("/api", auth.logger(morgan, "api.log"), auth.requireRole('admin'), api);
-app.use("/", angular);
+app.use(routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

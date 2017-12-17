@@ -1,7 +1,7 @@
 var request = require('request');
 var values = require('object.values');
 var q = require('q');
-var settings = require('./settings');
+var settings = require('../routes/settings');
 var except = require('./exceptions');
 var api = module.exports;
 var fs = require('fs');
@@ -82,7 +82,7 @@ api.findResource = function(res, resource) {
             } else if (response.statusCode == 409) {
                 except.conflictError(res, resp.body.message);
             } else if (response.statusCode == 403) {
-                except.forbiddenError(res, resp.body.message);
+                except.forbiddenError(res);
             } else if (response.statusCode == 500) {
                 except.serverError(res, resp.body.message);
             }
