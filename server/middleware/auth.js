@@ -1,5 +1,10 @@
+
 var path = require("path");
 var fs = require("fs");
+
+
+
+
 
 module.exports = {
     logger: function(morgan, filename) {
@@ -20,7 +25,7 @@ module.exports = {
             return JSON.stringify(req.body);
         });
 
-        return morgan(":method :url :status (:params) :response-time ", {
+        return morgan(":method :url :status (:params)  ", {
             stream: adminStream
         });
     },
