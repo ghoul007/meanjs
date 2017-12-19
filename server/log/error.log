@@ -1,0 +1,33 @@
+TypeError: res.header is not a function
+    at Object.except.serverError (/home/ahmed/projects/structure/structure/server/config/exceptions.js:6:10)
+    at Object.call (/home/ahmed/projects/structure/structure/server/config/api.js:38:20)
+    at /home/ahmed/projects/structure/structure/server/controllers/generic/rest.js:92:6
+    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:275:10)
+TypeError: res.header is not a function
+    at Object.except.serverError (/home/ahmed/projects/structure/structure/server/config/exceptions.js:6:10)
+    at Object.call (/home/ahmed/projects/structure/structure/server/config/api.js:38:20)
+    at /home/ahmed/projects/structure/structure/server/controllers/generic/rest.js:92:6
+    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:275:10)
+TypeError: res.header is not a function
+    at Object.except.serverError (/home/ahmed/projects/structure/structure/server/config/exceptions.js:6:10)
+    at Object.call (/home/ahmed/projects/structure/structure/server/config/api.js:38:20)
+    at /home/ahmed/projects/structure/structure/server/controllers/generic/rest.js:92:6
+    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:275:10)

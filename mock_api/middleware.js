@@ -5,7 +5,6 @@ const USERNAME = "angus.dickens@example.org";
 const PASSWORD = "secret";
 
 module.exports = function(req, res, next) {
-    debugger;
 
     if (req.url == "/login" && req.method == "POST") {
 
@@ -18,20 +17,20 @@ module.exports = function(req, res, next) {
         }
         res.end();
         return;
-    } else if ((req.url.startsWith("/product") && req.method != "GET") ||
-        (req.url.startsWith("/movies") && req.method != "POST")) {
+    } else if ((req.url.startsWith("/movies") && req.method != "GET") ||
+        (req.url.startsWith("/movies") && req.method == "POST")) {
         let token = req.headers["authorization"];
         console.log(token);
         if (token != null && token.startsWith("Bearer")) {
-          console.log("-------------");
+            console.log("-------------");
             token = token.substring(7, token.length - 1);
             try {
-              console.log("2",token);
+                console.log("2", token);
                 // jwt.verify(token, APP_SECRET);
                 next();
                 return;
             } catch (err) {
-              console.log("error",err);
+                console.log("error", err);
             }
         }
 
