@@ -81,3 +81,5 @@ POST /api/list_resource 200 ({"resource":"movies"}) 38.326
 POST /api/list_resource 200 ({"resource":"movies"}) 36.388 
 POST /api/list_resource 200 ({"resource":"movies"}) 38.214 
 POST /api/list_resource 200 ({"resource":"movies"}) 12.349 
+POST /api/list_resource 200 ({"resource":"movies"}) 55.561 
+POST /api/list_resource 200 ({"resource":"movies"}) 21.541 
