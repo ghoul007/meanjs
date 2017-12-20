@@ -6,6 +6,9 @@ var except = require('./exceptions');
 var api = module.exports;
 var fs = require('fs');
 
+
+
+
 // var configurationFile = '/etc/top_tv.json';
 
 // var configuration = JSON.parse(fs.readFileSync(configurationFile));
@@ -26,6 +29,13 @@ api.findResource = function(res, resource) {
         return url.replace(re, uuid);
     };
 
+    var getUrlParamsQuery = function(resource, action, data) {
+        var re = /<+\w+>/g;
+        var url = getUrl(resource, action);
+        const searchParams = JSON.stringify(data).replace(/:/g, '=').replace(/,/g, '?').replace(/[{"}]/g, "")
+        return url.replace(re, URLSearchParams.toString());
+    };
+
     var getMethod = function(resource, action) {
         return apiMapUrl[resource][action].method;
     };
@@ -35,15 +45,15 @@ api.findResource = function(res, resource) {
         var method, url, headers, deferred = q.defer();
 
         if (!apiMapUrl.hasOwnProperty(resource))
-            except.serverError(res, 'Resource `' + resource || "" + '` not found');
+            return except.serverError(res, 'Resource `' + resource || "" + '` not found');
 
         if (!action)
-            except.serverError(res, 'No action defined to call !');
+            return except.serverError(res, 'No action defined to call !');
 
         var listOfActions = Object.keys(apiMapUrl[resource]);
 
         if (listOfActions.indexOf(action) < 0)
-            except.serverError(res, 'Undefined action !');
+            return except.serverError(res, 'Undefined action !');
 
         method = getMethod(resource, action);
         url = getUrl(resource, action);
@@ -56,6 +66,9 @@ api.findResource = function(res, resource) {
 
         if (uuid)
             options.url = getUrlParams(resource, action, uuid);
+
+        if (action == "filter")
+            options.url = getUrlParamsQuery(resource, action, data);
 
         if (data) {
             options.json = true;
@@ -70,7 +83,7 @@ api.findResource = function(res, resource) {
                 resp = body;
             }
 
-            if (!error && response.statusCode == 200) {
+            if (!error && (response.statusCode == 200 || response.statusCode == 201)) {
                 deferred.resolve(resp);
             } else if (response.statusCode == 401) {
                 deferred.resolve(null);

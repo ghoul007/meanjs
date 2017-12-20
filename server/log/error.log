@@ -1,7 +1,5 @@
-TypeError: res.header is not a function
-    at Object.except.serverError (/home/ahmed/projects/structure/structure/server/config/exceptions.js:6:10)
-    at Object.call (/home/ahmed/projects/structure/structure/server/config/api.js:38:20)
-    at /home/ahmed/projects/structure/structure/server/controllers/generic/rest.js:92:6
+TypeError: api.findResource(...).call(...).then is not a function
+    at /home/ahmed/projects/structure/structure/server/controllers/generic/rest.js:53:10
     at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
     at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:137:13)
     at Route.dispatch (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:112:3)
@@ -9,25 +7,16 @@ TypeError: res.header is not a function
     at /home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:281:22
     at Function.process_params (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:335:12)
     at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:275:10)
-TypeError: res.header is not a function
-    at Object.except.serverError (/home/ahmed/projects/structure/structure/server/config/exceptions.js:6:10)
-    at Object.call (/home/ahmed/projects/structure/structure/server/config/api.js:38:20)
-    at /home/ahmed/projects/structure/structure/server/controllers/generic/rest.js:92:6
-    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
-    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:137:13)
-    at Route.dispatch (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
-    at /home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:281:22
-    at Function.process_params (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:335:12)
-    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:275:10)
-TypeError: res.header is not a function
-    at Object.except.serverError (/home/ahmed/projects/structure/structure/server/config/exceptions.js:6:10)
-    at Object.call (/home/ahmed/projects/structure/structure/server/config/api.js:38:20)
-    at /home/ahmed/projects/structure/structure/server/controllers/generic/rest.js:92:6
-    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
-    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:137:13)
-    at Route.dispatch (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/layer.js:95:5)
-    at /home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:281:22
-    at Function.process_params (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:335:12)
-    at next (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/router/index.js:47:12)
+Error: Can't set headers after they are sent.
+    at ServerResponse.OutgoingMessage.setHeader (_http_outgoing.js:357:11)
+    at ServerResponse.header (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/response.js:730:10)
+    at ServerResponse.send (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/response.js:170:12)
+    at done (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/response.js:967:10)
+    at Object.exports.renderFile (/home/ahmed/projects/structure/structure/server/node_modules/jade/lib/index.js:374:12)
+    at View.exports.__express [as engine] (/home/ahmed/projects/structure/structure/server/node_modules/jade/lib/index.js:417:11)
+    at View.render (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/view.js:127:8)
+    at tryRender (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/application.js:640:10)
+    at EventEmitter.render (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/application.js:592:3)
+    at ServerResponse.render (/home/ahmed/projects/structure/structure/server/node_modules/express/lib/response.js:971:7)

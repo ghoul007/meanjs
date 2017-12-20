@@ -6,7 +6,8 @@
     "start": "forever -e ./log/error.log ./bin/www",
     "dev": " nodemon  ./bin/www",
     "stop": "forever stopall",
-    "debug": "node --inspect --debug-brk  ./bin/www"
+    "log": "DEBUG_COLORS=no DEBUG=* nodemon ./bin/www",
+    "debug": "DEBUG_COLORS=no DEBUG=* node --inspect --debug-brk  ./bin/www"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -28,7 +29,8 @@
     "nodemon": "^1.12.1",
     "object.values": "^1.0.4",
     "resource-router-middleware": "^0.7.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "url-search-params-polyfill": "^2.0.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
