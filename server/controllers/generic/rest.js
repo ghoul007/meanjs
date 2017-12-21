@@ -10,6 +10,7 @@ router.post("/list_resource", function(req, res, next) {
     var resource = req.body.resource;
     var uuid = req.body.uuid;
     var action = "list";
+
     const AuthStr = "Bearer ".concat(req.session.tokenApi);
     let token =
         (req.session.tokenApi && AuthStr) ||
@@ -105,7 +106,7 @@ router.post("/delete_resource", function(req, res, next) {
 });
 
 /**
- * Filter resource
+ * Filter resource [_page, _limit, _sort, _order, _start, _end, _gte, _lte, _like, q ]
  */
 router.post("/filter_resource", function(req, res, next) {
     var resource = req.body.resource;
@@ -127,27 +128,5 @@ router.post("/filter_resource", function(req, res, next) {
         });
 });
 
-/**
- * Search resource
- */
-router.post("/search_resource", function(req, res, next) {
-    var resource = req.body.resource;
-    var data = req.body.data;
-    var action = "search";
-
-    const AuthStr = "Bearer ".concat(req.session.tokenApi);
-    let token =
-        (req.session.tokenApi && AuthStr) ||
-        req.client.parser.incoming.headers.authorization;
-    console.log("AuthStr", token);
-    api.setHeaders("Authorization", token);
-
-    api
-        .findResource(res, resource)
-        .call(action, data, null)
-        .then(function(data) {
-            res.status(200).send(data);
-        });
-});
 
 module.exports = router;

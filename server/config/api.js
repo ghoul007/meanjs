@@ -32,8 +32,8 @@ api.findResource = function(res, resource) {
     var getUrlParamsQuery = function(resource, action, data) {
         var re = /<+\w+>/g;
         var url = getUrl(resource, action);
-        const searchParams = JSON.stringify(data).replace(/:/g, '=').replace(/,/g, '?').replace(/[{"}]/g, "")
-        return url.replace(re, URLSearchParams.toString());
+        const searchParams = JSON.stringify(data).replace(/:/g, '=').replace(/,/g, '&').replace(/[{"}]/g, "")
+        return url.replace(re, searchParams);
     };
 
     var getMethod = function(resource, action) {

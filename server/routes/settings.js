@@ -7,8 +7,7 @@ module.exports = {
                 "create": { "method": "POST", "url": "/movies" },
                 "update": { "method": "PUT", "url": "/movies/<uuid>" },
                 "delete": { "method": "DELETE", "url": "/movies/<uuid>" },
-                "filter": { "method": "GET", "url": "/movies/<filter>" },
-                "search": { "method": "POST", "url": "/movies/search" }
+                "filter": { "method": "GET", "url": "/movies?<filter>" }
             }
 
         }

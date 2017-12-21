@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for server/middleware/rest.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">server/middleware</a> rest.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15.63% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>5/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15.63% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>5/32</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var axios = require("axios");
+var url = "https://jsonplaceholder.typicode.com";
+var resource = require("resource-router-middleware");
+&nbsp;
+var users = [];
+&nbsp;
+module.exports = {
+    mergeParams: true,
+&nbsp;
+    /** Property name to store preloaded entity on `request`. */
+    id: "user",
+&nbsp;
+    /** For requests with an `id`, you can auto-load the entity.
+     *	Errors terminate the request, success sets `req[id] = data`.
+     */
+    load: <span class="fstat-no" title="function not covered" >fu</span>nction(req, id, callback) {
+        var user = <span class="cstat-no" title="statement not covered" >users.filter(<span class="fstat-no" title="function not covered" >fu</span>nction(user) {</span>
+<span class="cstat-no" title="statement not covered" >            return user.id === id;</span>
+        })[0];
+<span class="cstat-no" title="statement not covered" >        if (!user) {</span>
+<span class="cstat-no" title="statement not covered" >            callback("Not found");</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            callback(null, user);</span>
+        }
+    },
+&nbsp;
+    /** GET / - List all entities */
+    list: <span class="fstat-no" title="function not covered" >fu</span>nction(resource) {
+<span class="cstat-no" title="statement not covered" >        return <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >            return axios</span>
+                .get(`${url}/${resource}`)
+                .then(<span class="fstat-no" title="function not covered" >fu</span>nction(data) {
+<span class="cstat-no" title="statement not covered" >                    res.status(200).json(data.data);</span>
+                })
+                .catch(<span class="fstat-no" title="function not covered" >fu</span>nction(err) {
+<span class="cstat-no" title="statement not covered" >                    res.status(500).send(err);</span>
+                });
+        };
+    },
+&nbsp;
+    /** POST / - Create a new entity */
+    create: <span class="fstat-no" title="function not covered" >fu</span>nction(req, res) {
+        var user = <span class="cstat-no" title="statement not covered" >req.body;</span>
+<span class="cstat-no" title="statement not covered" >        user.id = users.length.toString(36);</span>
+<span class="cstat-no" title="statement not covered" >        users.push(user);</span>
+<span class="cstat-no" title="statement not covered" >        res.json(user);</span>
+    },
+&nbsp;
+    /** GET /:id - Return a given entity */
+    read: <span class="fstat-no" title="function not covered" >fu</span>nction(req, res) {
+<span class="cstat-no" title="statement not covered" >        res.json(req.user);</span>
+    },
+&nbsp;
+    /** PUT /:id - Update a given entity */
+    update: <span class="fstat-no" title="function not covered" >fu</span>nction(req, res) {
+        var id = <span class="cstat-no" title="statement not covered" >req.params[this.id];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        for (var i = users.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered" >            if (users[i].id === id) {</span>
+<span class="cstat-no" title="statement not covered" >                users[i] = req.body;</span>
+<span class="cstat-no" title="statement not covered" >                users[i].id = id;</span>
+<span class="cstat-no" title="statement not covered" >                return res.status(204).send("Accepted");</span>
+            }
+        }
+<span class="cstat-no" title="statement not covered" >        res.status(404).send("Not found");</span>
+    },
+&nbsp;
+    /** DELETE /:id - Delete a given entity */
+    delete: <span class="fstat-no" title="function not covered" >fu</span>nction(req, res) {
+        var id = <span class="cstat-no" title="statement not covered" >req.params[this.id];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        for (var i = users.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered" >            if (users[i].id === id) {</span>
+<span class="cstat-no" title="statement not covered" >                users.splice(i, 1);</span>
+<span class="cstat-no" title="statement not covered" >                return res.status(200);</span>
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        res.status(404).send("Not found");</span>
+    }
+};</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Dec 21 2017 12:07:05 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

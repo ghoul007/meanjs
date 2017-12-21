@@ -7,7 +7,9 @@
     "dev": " nodemon  ./bin/www",
     "stop": "forever stopall",
     "log": "DEBUG_COLORS=no DEBUG=* nodemon ./bin/www",
-    "debug": "DEBUG_COLORS=no DEBUG=* node --inspect --debug-brk  ./bin/www"
+    "debug": "DEBUG_COLORS=no DEBUG=* node --inspect --debug-brk  ./bin/www",
+    "test": "tap ./test/*.js --cov ",
+    "cover": "tap ./test/*.js --cov --coverage-report=lcov"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -33,12 +35,15 @@
     "url-search-params-polyfill": "^2.0.1"
   },
   "devDependencies": {
+    "devtool": "^2.3.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-jshint": "^2.0.4",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-ruby-sass": "^2.1.1",
-    "jshint": "^2.9.5"
+    "jshint": "^2.9.5",
+    "supertest": "^3.0.0",
+    "tap": "^11.0.0"
   }
 }
