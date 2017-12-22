@@ -29,9 +29,3 @@ tap.test("List Resources", function(assert) {
             assert.end();
         });
 });
-
-tap.test("first test", function(assert) {
-    debugger;
-    tap.pass("ffffff");
-    assert.end();
-});

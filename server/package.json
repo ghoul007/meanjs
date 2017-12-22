@@ -1,49 +1,38 @@
 {
-  "name": "server",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "forever -e ./log/error.log ./bin/www",
-    "dev": " nodemon  ./bin/www",
-    "stop": "forever stopall",
-    "log": "DEBUG_COLORS=no DEBUG=* nodemon ./bin/www",
-    "debug": "DEBUG_COLORS=no DEBUG=* node --inspect --debug-brk  ./bin/www",
-    "test": "tap ./test/*.js --cov ",
-    "cover": "tap ./test/*.js --cov --coverage-report=lcov"
-  },
-  "dependencies": {
-    "axios": "^0.17.1",
-    "body-parser": "~1.18.2",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "dotenv": "^4.0.0",
-    "express": "~4.15.5",
-    "express-bearer-token": "^2.1.0",
-    "express-mung": "^0.4.6",
-    "express-session": "^1.15.6",
-    "forever": "^0.15.3",
-    "helmet": "^3.9.0",
-    "https": "^1.0.0",
-    "jade": "~1.11.0",
-    "jsonapi-serializer": "^3.5.5",
-    "jwt-express": "^1.1.0",
-    "morgan": "~1.9.0",
-    "nodemon": "^1.12.1",
-    "object.values": "^1.0.4",
-    "resource-router-middleware": "^0.7.0",
-    "serve-favicon": "~2.4.5",
-    "url-search-params-polyfill": "^2.0.1"
-  },
-  "devDependencies": {
-    "devtool": "^2.3.1",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-jshint": "^2.0.4",
-    "gulp-livereload": "^3.8.1",
-    "gulp-nodemon": "^2.2.1",
-    "gulp-ruby-sass": "^2.1.1",
-    "jshint": "^2.9.5",
-    "supertest": "^3.0.0",
-    "tap": "^11.0.0"
-  }
+    "name": "server",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "forever -e ./log/error.log ./bin/www",
+        "dev": " nodemon  ./bin/www",
+        "stop": "forever stopall",
+        "log": "DEBUG_COLORS=no DEBUG=* nodemon ./bin/www",
+        "debug": "DEBUG_COLORS=no DEBUG=* node --inspect --debug-brk  ./bin/www",
+        "security": "auditjs",
+        "test": "tap ./test/*.js",
+        "cover": "tap ./test/*.js --cov --coverage-report=lcov"
+    },
+    "dependencies": {
+        "axios": "^0.17.1",
+        "body-parser": "~1.18.2",
+        "cookie-parser": "~1.4.3",
+        "debug": "~3.1.0",
+        "dotenv": "^4.0.0",
+        "express": "~4.16.2",
+        "express-bearer-token": "^2.1.0",
+        "express-mung": "^0.4.6",
+        "express-session": "^1.15.6",
+        "forever": "^0.15.3",
+        "helmet": "^3.9.0",
+        "https": "^1.0.0",
+        "jsonapi-serializer": "^3.5.5",
+        "jwt-express": "^1.1.0",
+        "morgan": "~1.9.0",
+        "nodemon": "^1.12.1",
+        "object.values": "^1.0.4",
+        "resource-router-middleware": "^0.7.0"
+    },
+    "devDependencies": {
+
+    }
 }
