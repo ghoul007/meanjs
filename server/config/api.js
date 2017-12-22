@@ -1,18 +1,12 @@
+require("dotenv").config();
 var request = require('request');
 var values = require('object.values');
 var q = require('q');
-var settings = require('../routes/settings');
-var except = require('./exceptions');
+var settings = require('../helpers/settings');
+var except = require('../helpers/APIError');
 var api = module.exports;
 var fs = require('fs');
-
-
-
-
-// var configurationFile = '/etc/top_tv.json';
-
-// var configuration = JSON.parse(fs.readFileSync(configurationFile));
-var apiUrl = "http://127.0.0.1:8000"
+var apiUrl = process.env.API
 var apiMapUrl = settings.api.map;
 var headers = {
     'content-type': 'application/json'

@@ -10,7 +10,6 @@ router.post("/list_resource", function(req, res, next) {
     var resource = req.body.resource;
     var uuid = req.body.uuid;
     var action = "list";
-
     const AuthStr = "Bearer ".concat(req.session.tokenApi);
     let token =
         (req.session.tokenApi && AuthStr) ||

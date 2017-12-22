@@ -14,15 +14,17 @@ import { HomeComponent } from "./home/home.component";
 import { PostComponent } from "./post/post.component";
 import { MovieComponent } from './movie/movie.component';
 import {MovieService} from './movie.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 const ROOT = [
   { path: "", redirectTo:"home", pathMatch:'full' },
   { path: "home", component: HomeComponent,  canActivate: [AuthGuardService] },
   { path: "login", component: LoginComponent },
   { path: "post", component: PostComponent  },
-  { path: "movie", component: MovieComponent  }
+  { path: "movie", component: MovieComponent  },
+  { path: "**", component: NotFoundComponent  }
 ];
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, PostComponent, MovieComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, PostComponent, MovieComponent, NotFoundComponent],
   imports: [BrowserModule, JwtModule, FormsModule, HttpModule, RouterModule.forRoot(ROOT) ],
   providers: [PostService,AuthService , AuthGuardService, MovieService],
   bootstrap: [AppComponent]
