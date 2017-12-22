@@ -35,15 +35,15 @@ api.findResource = function(res, resource) {
         var method, url, headers, deferred = q.defer();
 
         if (!apiMapUrl.hasOwnProperty(resource))
-            except.serverError('Resource `' + resource + '` not found', res);
+            except.serverError(res, 'Resource `' + resource || "" + '` not found');
 
         if (!action)
-            except.serverError('No action defined to call !', res);
+            except.serverError(res, 'No action defined to call !');
 
         var listOfActions = Object.keys(apiMapUrl[resource]);
 
         if (listOfActions.indexOf(action) < 0)
-            except.serverError('Undefined action !', res);
+            except.serverError(res, 'Undefined action !');
 
         method = getMethod(resource, action);
         url = getUrl(resource, action);
@@ -77,8 +77,8 @@ api.findResource = function(res, resource) {
             } else if (response.statusCode == 404) {
                 except.resourceNotFoundError(res);
             } else if (response.statusCode == 400) {
-              if(resp.body)
-                except.badRequestError(res, resp.body.message);
+                if (resp.body)
+                    except.badRequestError(res, resp.body.message);
             } else if (response.statusCode == 409) {
                 except.conflictError(res, resp.body.message);
             } else if (response.statusCode == 403) {

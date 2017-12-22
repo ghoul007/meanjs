@@ -1,7 +1,9 @@
 var express = require('express');
 var except = module.exports;
 
-except.serverError = function (res, message) {
+except.serverError = function(res, message) {
+
+    console.log(res);
     return res
         .header("Content-Type", "application/json")
         .status(500)
@@ -11,7 +13,7 @@ except.serverError = function (res, message) {
         });
 };
 
-except.resourceNotFoundError = function (res, message) {
+except.resourceNotFoundError = function(res, message) {
     return res
         .header("Content-Type", "application/json")
         .status(404)
@@ -21,7 +23,7 @@ except.resourceNotFoundError = function (res, message) {
         });
 };
 
-except.badRequestError = function (res, message) {
+except.badRequestError = function(res, message) {
     return res
         .header("Content-Type", "application/json")
         .status(400)
@@ -31,7 +33,7 @@ except.badRequestError = function (res, message) {
         });
 };
 
-except.conflictError = function (res, message) {
+except.conflictError = function(res, message) {
     return res
         .header("Content-Type", "application/json")
         .status(409)
@@ -41,7 +43,7 @@ except.conflictError = function (res, message) {
         });
 };
 
-except.forbiddenError = function (res, message) {
+except.forbiddenError = function(res, message) {
     return res
         .header("Content-Type", "application/json")
         .status(403)
@@ -51,7 +53,7 @@ except.forbiddenError = function (res, message) {
         });
 };
 
-except.unauthorizedError = function (res, message) {
+except.unauthorizedError = function(res, message) {
     return res
         .header("Content-Type", "application/json")
         .status(401)
