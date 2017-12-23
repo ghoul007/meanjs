@@ -1,137 +1,25 @@
-GET /api/movie 404 (- [object Object] -)
-GET /api 200 (- [object Object] -)
-GET /api 200 (- [object Object] -)
-GET /api 200 (- [object Object] -)
-GET /api 200 (- [object Object] -)
-GET /api 200 ({})
-POST /api/list_resource/movies 404 ({"resource":"movies"})
-POST /api/list_resource 404 ({"resource":"movies"})
-POST /api/list_resource 404 ({"resource":"movies"})
-POST /api/list_resource 404 ({"resource":"movies"})
-POST /api/list_resource 404 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 403 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"})
-POST /api/list_resource 200 ({"resource":"movies"}) 36.577 ms 
-POST /api/list_resource 200 ({"resource":"movies"}) 43.158 
-POST /api/list_resource 200 ({"resource":"movies"}) 36.617 
-POST /api/list_resource 200 ({"resource":"movies"}) 43.549 
-POST /api/list_resource 200 ({"resource":"movies"}) 51.543 
-POST /api/list_resource 200 ({"resource":"movies"}) 66.946 
-POST /api/list_resource 200 ({"resource":"movies"}) 33.914 
-POST /api/list_resource 200 ({"resource":"movies"}) 36.492 
-POST /api/list_resource 200 ({"resource":"movies"}) 13.514 
-POST /api/list_resource 200 ({"resource":"movies"}) 38.326 
-POST /api/list_resource 200 ({"resource":"movies"}) 36.388 
-POST /api/list_resource 200 ({"resource":"movies"}) 38.214 
-POST /api/list_resource 200 ({"resource":"movies"}) 12.349 
-POST /api/list_resource 200 ({"resource":"movies"}) 73.947 
-POST /api/list_resource 200 ({"resource":"movies"}) 81.621 
-POST /api/list_resource 200 ({"resource":"movies"}) 39.941 
-POST /api/list_resource 200 ({"resource":"movies"}) 46.558 
-POST /api/list_resource 200 ({"resource":"movies"}) 38.092 
-POST /api/list_resource 200 ({"resource":"movies"}) 38.574 
-POST /api/list_resource 200 ({"resource":"movies"}) 44.705 
-POST /api/list_resource 200 ({"resource":"movies"}) 40.710 
-POST /api/list_resource 200 ({"resource":"movies"}) 38.137 
-POST /api/list_resource 200 ({"resource":"movies"}) 14.498 
-POST /api/list_resource 200 ({"resource":"movies"}) - 
-POST /api/list_resource 200 ({"resource":"movies"}) - 
-POST /api/list_resource 200 ({"resource":"movies"}) - 
-POST /api/list_resource 200 ({"resource":"movies"}) - 
-POST /api/list_resource 200 ({"resource":"movies"}) - 
-POST /api/list_resource 200 ({"resource":"movies"}) function router(req, res, next) {
-    router.handle(req, res, next);
-  } 
-POST /api/list_resource 200 ({"resource":"movies"}) function router(req, res, next) {
-    router.handle(req, res, next);
-  } 
-POST /api/list_resource 200 ({"resource":"movies"}) function router(req, res, next) {
-    router.handle(req, res, next);
-  } 
 POST /api/list_resource 200 ({"resource":"movies"})  
 POST /api/list_resource 200 ({"resource":"movies"})  
 POST /api/list_resource 200 ({"resource":"movies"})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 500 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  
 POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
-POST /api/list_resource 200 ({"resource":"movies"})  
+POST /api/create_resource 200 ({"resource":"movies","data":{"name":"test3","description":"description"}})  

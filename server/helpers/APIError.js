@@ -3,7 +3,7 @@ var except = module.exports;
 
 except.serverError = function(res, message) {
 
-    console.log(res);
+
     return res
         .header("Content-Type", "application/json")
         .status(500)

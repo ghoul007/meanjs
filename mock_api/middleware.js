@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-
 const APP_SECRET = "process.env.jwtSecret";
 const USERNAME = "angus.dickens@example.org";
 const PASSWORD = "secret";
@@ -7,7 +6,6 @@ const PASSWORD = "secret";
 module.exports = function(req, res, next) {
 
     if (req.url == "/login" && req.method == "POST") {
-
         if (req.body != null && req.body.username == USERNAME &&
             req.body.password == PASSWORD) {
             let token = jwt.sign({ data: USERNAME, expiresIn: "1h" }, APP_SECRET);
@@ -17,8 +15,7 @@ module.exports = function(req, res, next) {
         }
         res.end();
         return;
-    } else if ((req.url.startsWith("/movies") && req.method != "GET") ||
-        (req.url.startsWith("/movies") && req.method == "POST")) {
+    } else if (req.url.startsWith("/movies") && req.method != "GET") {
         let token = req.headers["authorization"];
         console.log(token);
         if (token != null && token.startsWith("Bearer")) {

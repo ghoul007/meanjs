@@ -1,15 +1,12 @@
+require("dotenv").config();
 var request = require('request');
 var values = require('object.values');
 var q = require('q');
-var settings = require('../routes/settings');
-var except = require('./exceptions');
+var settings = require('../helpers/settings');
+var except = require('../helpers/APIError');
 var api = module.exports;
 var fs = require('fs');
-
-// var configurationFile = '/etc/top_tv.json';
-
-// var configuration = JSON.parse(fs.readFileSync(configurationFile));
-var apiUrl = "http://127.0.0.1:8000"
+var apiUrl = process.env.API
 var apiMapUrl = settings.api.map;
 var headers = {
     'content-type': 'application/json'
@@ -26,6 +23,13 @@ api.findResource = function(res, resource) {
         return url.replace(re, uuid);
     };
 
+    var getUrlParamsQuery = function(resource, action, data) {
+        var re = /<+\w+>/g;
+        var url = getUrl(resource, action);
+        const searchParams = JSON.stringify(data).replace(/:/g, '=').replace(/,/g, '&').replace(/[{"}]/g, "")
+        return url.replace(re, searchParams);
+    };
+
     var getMethod = function(resource, action) {
         return apiMapUrl[resource][action].method;
     };
@@ -35,15 +39,15 @@ api.findResource = function(res, resource) {
         var method, url, headers, deferred = q.defer();
 
         if (!apiMapUrl.hasOwnProperty(resource))
-            except.serverError(res, 'Resource `' + resource || "" + '` not found');
+            return except.serverError(res, 'Resource `' + resource || "" + '` not found');
 
         if (!action)
-            except.serverError(res, 'No action defined to call !');
+            return except.serverError(res, 'No action defined to call !');
 
         var listOfActions = Object.keys(apiMapUrl[resource]);
 
         if (listOfActions.indexOf(action) < 0)
-            except.serverError(res, 'Undefined action !');
+            return except.serverError(res, 'Undefined action !');
 
         method = getMethod(resource, action);
         url = getUrl(resource, action);
@@ -56,6 +60,9 @@ api.findResource = function(res, resource) {
 
         if (uuid)
             options.url = getUrlParams(resource, action, uuid);
+
+        if (action == "filter")
+            options.url = getUrlParamsQuery(resource, action, data);
 
         if (data) {
             options.json = true;
@@ -70,7 +77,7 @@ api.findResource = function(res, resource) {
                 resp = body;
             }
 
-            if (!error && response.statusCode == 200) {
+            if (!error && (response.statusCode == 200 || response.statusCode == 201)) {
                 deferred.resolve(resp);
             } else if (response.statusCode == 401) {
                 deferred.resolve(null);

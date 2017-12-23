@@ -4,7 +4,7 @@ var auth = require("../../middleware/auth");
 var morgan = require("morgan");
 var winston = require("winston");
 var mung = require("express-mung");
-var api = require("../../controllers/api.controller");
+var apiController = require("../../controllers/api.controller");
 
 var logger = new winston.Logger({
     transports: [
@@ -13,7 +13,6 @@ var logger = new winston.Logger({
     ]
 });
 
-logger.log("info", "Hello distributed log files!");
 router.use(
     mung.json(function transform(body, req, res) {
         logger.log("info", {
@@ -27,8 +26,8 @@ router.use(
     })
 );
 
-router.use("/api", auth.logger(morgan, "./log/api.log"), api);
+router.use("/api", auth.logger(morgan, "./log/api.log"), apiController);
 // router.use("/api",  api);
 
-module.exports = router;
+
 module.exports = router;

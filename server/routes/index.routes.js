@@ -1,21 +1,15 @@
 var express = require("express");
 var router = express.Router();
-var auth = require("../middleware/auth");
-var morgan = require("morgan");
-var apiController = require("../controllers/api.controller");
-var loginController = require("../controllers/login.controller");
 var indexController = require("../controllers/index.controller");
 var apiRoutes = require("./api/api.routes");
+var loginRoutes = require("./api/login.routes");
 
-
-
-router.use("/cm",auth.logger(morgan, "./log/login.log"),  loginController);
-// auth.logger(morgan, "../log/login.log"),
+router.use(loginRoutes);
 router.use(apiRoutes);
-//jwt.active(),
-// app.use("/api", auth.logger(morgan, "api.log"), auth.requireRole('admin'), api);
-
-// angular
 router.use("/", indexController);
+
+// router.get("/crash", function(req, res, next) {
+//     process.exit(1);
+// });
 
 module.exports = router;

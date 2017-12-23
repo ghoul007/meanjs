@@ -2,14 +2,12 @@ module.exports = {
     'api': {
         'map': {
             "movies": {
-                "login": { "method": "POST", "url": "/movies/login" },
-                "change": { "method": "POST", "url": "/movies/change" },
+                "get_by_id": { "method": "GET", "url": "/movies/<uuid>" },
                 "list": { "method": "GET", "url": "/movies" },
                 "create": { "method": "POST", "url": "/movies" },
                 "update": { "method": "PUT", "url": "/movies/<uuid>" },
                 "delete": { "method": "DELETE", "url": "/movies/<uuid>" },
-                "exist": { "method": "POST", "url": "/movies/exist" },
-                "search": { "method": "POST", "url": "/movies/search" }
+                "filter": { "method": "GET", "url": "/movies?<filter>" }
             }
 
         }
