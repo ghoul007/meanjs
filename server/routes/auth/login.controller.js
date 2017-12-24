@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var rest = require("../middleware/rest");
+var rest = require("../../middleware/rest");
 var axios = require('axios');
 var JSONAPIError = require('jsonapi-serializer').Error;
 require("dotenv").config();

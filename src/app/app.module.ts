@@ -19,8 +19,8 @@ const ROOT = [
   { path: "", redirectTo:"home", pathMatch:'full' },
   { path: "home", component: HomeComponent,  canActivate: [AuthGuardService] },
   { path: "login", component: LoginComponent },
-  { path: "post", component: PostComponent  },
-  { path: "movie", component: MovieComponent  },
+  { path: "post", component: PostComponent,  canActivate: [AuthGuardService]  },
+  { path: "movie", component: MovieComponent,  canActivate: [AuthGuardService]  },
   { path: "**", component: NotFoundComponent  }
 ];
 @NgModule({

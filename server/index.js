@@ -8,7 +8,6 @@ var jwt = require("jwt-express");
 var sess = require("express-session");
 require("dotenv").config();
 var env = process.env.NODE_ENV || "development";
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
@@ -73,7 +72,7 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render("error");
+    res.status(500).send('Oops');
 });
 
 module.exports = app;

@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "~1.18.2",
+    "colors": "^1.1.2",
     "cookie-parser": "~1.4.3",
     "debug": "~3.1.0",
     "dotenv": "^4.0.0",
@@ -24,6 +25,7 @@
     "express-session": "^1.15.6",
     "forever": "^0.15.3",
     "helmet": "^3.9.0",
+    "http": "^0.0.0",
     "https": "^1.0.0",
     "jsonapi-serializer": "^3.5.5",
     "jwt-express": "^1.1.0",

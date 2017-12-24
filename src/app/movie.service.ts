@@ -13,6 +13,8 @@ export class MovieService {
     let headers = new Headers({ "Content-Type": "application/json" });
     let options = new RequestOptions({ headers: headers });
 
-   return  this._http.post("/api/list_resource", JSON.stringify({ resource: 'movies' }), options).map(res => res.json());
+   return  this._http.post("/api/list_resource",
+   JSON.stringify({ resource: 'movie' }), options).map(res =>
+    res.json());
   }
 }
