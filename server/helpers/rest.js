@@ -50,7 +50,7 @@ router.post("/create_resource", function(req, res, next) {
     setTokenHeader(req, api);
     api
         .findResource(res, resource)
-        .call(action, data)
+        .call(action, res, data)
         .then(
             function(data) {
                 res.status(200).send(data);
@@ -74,7 +74,7 @@ router.post("/update_resource", function(req, res, next) {
     setTokenHeader(req, api);
     api
         .findResource(res, resource)
-        .call(action, data, uuid)
+        .call(action, res, data, uuid)
         .then(
             function(data) {
                 res.status(200).send(data);
@@ -95,7 +95,7 @@ router.post("/delete_resource", function(req, res, next) {
     setTokenHeader(req, api);
     api
         .findResource(res, resource)
-        .call(action, null, uuid)
+        .call(action, res, null, uuid)
         .then(
             function(data) {
                 res.status(200).send(data);
@@ -116,7 +116,7 @@ router.post("/filter_resource", function(req, res, next) {
     setTokenHeader(req, api);
     api
         .findResource(res, resource)
-        .call(action, data, null)
+        .call(action, res, data, null)
         .then(
             function(data) {
                 res.status(200).send(data);
@@ -136,10 +136,10 @@ router.post("/action_resource", function(req, res, next) {
     var action = req.body.action;
 
     setTokenHeader(req, api);
-    api.setMiddleware(res, resource, action);
+    api.middleware(res, resource, action);
     api
         .findResource(res, resource)
-        .call(action, data, null)
+        .call(action, res, data, null)
         .then(
             function(data) {
                 res.status(200).send(data);

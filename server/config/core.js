@@ -34,9 +34,6 @@ api.findResource = function(res, resource) {
         return apiMapUrl[resource][action].method;
     };
 
-
-
-
     var call = function(action, res, data, uuid) {
 
         var method, url, headers, response;
@@ -75,14 +72,13 @@ api.findResource = function(res, resource) {
         return new Promise(function(resolve, reject) {
             request(options, function(error, response, body) {
                 if (!error && (response.statusCode == 200 || response.statusCode == 201)) {
-                    resolve(JSON.parse(body));
+                    var result = (typeof body == "string") ? JSON.parse(body) : body;
+                    resolve(result);
                 } else {
                     reject(except.handleError(response, res));
                 }
             });
         });
-
-
     };
 
     return {
@@ -92,7 +88,7 @@ api.findResource = function(res, resource) {
 };
 
 
-api.setMiddleware = function(res, resource, action) {
+api.middleware = function(res, resource, action) {
     try {
         require(`../routes/api/${resource}/${resource}.routes`)[action](
             api,
