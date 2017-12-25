@@ -36,7 +36,7 @@ api.findResource = function(res, resource) {
 
     var call = function(action, data, uuid) {
 
-        var method, url, headers, deferred = q.defer();
+        var method, url, headers, response;
 
         if (!apiMapUrl.hasOwnProperty(resource))
             return except.serverError(res, 'Resource `' + resource || "" + '` not found');
@@ -69,34 +69,16 @@ api.findResource = function(res, resource) {
             options.body = data;
         }
 
-        request(options, function(error, response, body) {
-            var resp = null;
-            try {
-                resp = JSON.parse(body);
-            } catch (error) {
-                resp = body;
-            }
-
-            if (!error && (response.statusCode == 200 || response.statusCode == 201)) {
-                deferred.resolve(resp);
-            } else if (response.statusCode == 401) {
-                deferred.resolve(null);
-            } else if (response.statusCode == 404) {
-                except.resourceNotFoundError(res);
-            } else if (response.statusCode == 400) {
-                if (resp.body)
-                    except.badRequestError(res, resp.body.message);
-            } else if (response.statusCode == 409) {
-                except.conflictError(res, resp.body.message);
-            } else if (response.statusCode == 403) {
-                except.forbiddenError(res);
-            } else if (response.statusCode == 500) {
-                except.serverError(res, resp.body.message);
-            }
-
+        return new Promise(function(resolve, reject) {
+            request(options, function(error, response, body) {
+                if (!error && (response.statusCode == 200 || response.statusCode == 201)) {
+                    resolve(JSON.parse(body));
+                } else {
+                    reject(except.handleError(response));
+                }
+            });
         });
 
-        return deferred.promise;
 
     };
 
