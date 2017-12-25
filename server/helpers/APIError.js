@@ -55,20 +55,29 @@ module.exports = {
                 message: message || 'Server Error !'
             });
     },
-    handleError: function(response) {
+    customError: function(res, status, header, message) {
+        return res
+            .header("Content-Type", "application/json")
+            .status(status)
+            .json({
+                name: header,
+                message: message || 'Server Error !'
+            });
+    },
+    handleError: function(response, res) {
         if (response.statusCode == 401) {
-            deferred.resolve(null);
+            return null;
         } else if (response.statusCode == 404) {
-            deferred.reject(resourceNotFoundError(response));
+            return this.resourceNotFoundError(res);
         } else if (response.statusCode == 400) {
             if (response.body)
-                deferred.reject(badRequestError(response, response.body.message));
+                return this.badRequestError(res, response.body.message);
         } else if (response.statusCode == 409) {
-            deferred.reject(conflictError(response, response.body.message));
+            return this.conflictError(res, response.body.message);
         } else if (response.statusCode == 403) {
-            deferred.reject(forbiddenError(response));
+            deferred.reject(forbiddenError(res));
         } else if (response.statusCode == 500) {
-            deferred.reject(serverError(response, response.body.message));
+            return this.serverError(res, response.body.message);
         }
     }
 }

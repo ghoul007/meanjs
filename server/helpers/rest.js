@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var auth = require("../middleware/auth");
 var api = require("../config/core");
+var exception = require("./APIError");
 
 /**
  * Get list of resource
@@ -10,26 +11,32 @@ router.post("/list_resource", function(req, res, next) {
     var resource = req.body.resource;
     var uuid = req.body.uuid;
     var action = "list";
-
-    setTokenHeader(req, api)
-
+    setTokenHeader(req, api);
     if (uuid) {
         action = "get_by_id";
         api
             .findResource(res, resource)
-            .call(action, null, uuid)
-            .then(function(data) {
-                res.status(200).send(data);
-            });
+            .call(action, res, null, uuid)
+            .then(
+                function(data) {
+                    res.status(200).send(data);
+                },
+                function(err) {
+                    return err;
+                }
+            );
     } else {
         api
             .findResource(res, resource)
-            .call(action)
-            .then(function(data) {
-                res.status(200).send(data);
-            }, function(err) {
-                return err;
-            });
+            .call(action, res)
+            .then(
+                function(data) {
+                    res.status(200).send(data);
+                },
+                function(err) {
+                    return err;
+                }
+            );
     }
 });
 
@@ -40,15 +47,18 @@ router.post("/create_resource", function(req, res, next) {
     var resource = req.body.resource;
     var data = req.body.data;
     var action = "create";
-
-    setTokenHeader(req, api)
-
+    setTokenHeader(req, api);
     api
         .findResource(res, resource)
         .call(action, data)
-        .then(function(data) {
-            return res.status(200).send(data);
-        });
+        .then(
+            function(data) {
+                res.status(200).send(data);
+            },
+            function(err) {
+                return err;
+            }
+        );
 });
 
 /**
@@ -61,15 +71,18 @@ router.post("/update_resource", function(req, res, next) {
     var action = "update";
     var obj = {};
     obj[uuid] = data;
-
-    setTokenHeader(req, api)
-
+    setTokenHeader(req, api);
     api
         .findResource(res, resource)
         .call(action, data, uuid)
-        .then(function(data) {
-            res.status(200).send(data);
-        });
+        .then(
+            function(data) {
+                res.status(200).send(data);
+            },
+            function(err) {
+                return err;
+            }
+        );
 });
 
 /**
@@ -79,15 +92,18 @@ router.post("/delete_resource", function(req, res, next) {
     var resource = req.body.resource;
     var uuid = req.body.uuid;
     var action = "delete";
-
-    setTokenHeader(req, api)
-
+    setTokenHeader(req, api);
     api
         .findResource(res, resource)
         .call(action, null, uuid)
-        .then(function(data) {
-            res.status(200).send(data);
-        });
+        .then(
+            function(data) {
+                res.status(200).send(data);
+            },
+            function(err) {
+                return err;
+            }
+        );
 });
 
 /**
@@ -97,15 +113,18 @@ router.post("/filter_resource", function(req, res, next) {
     var resource = req.body.resource;
     var data = req.body.data;
     var action = "filter";
-
-    setTokenHeader(req, api)
-
+    setTokenHeader(req, api);
     api
         .findResource(res, resource)
         .call(action, data, null)
-        .then(function(data) {
-            res.status(200).send(data);
-        });
+        .then(
+            function(data) {
+                res.status(200).send(data);
+            },
+            function(err) {
+                return err;
+            }
+        );
 });
 
 /**
@@ -116,19 +135,19 @@ router.post("/action_resource", function(req, res, next) {
     var data = req.body.data;
     var action = req.body.action;
 
-    setTokenHeader(req, api)
-    require(`../routes/api/${resource}/${resource}.routes`)[action](
-        api,
-        (uuid = null),
-        (data = null)
-    );
-    console.log(api.getHeaders());
+    setTokenHeader(req, api);
+    api.setMiddleware(res, resource, action);
     api
         .findResource(res, resource)
         .call(action, data, null)
-        .then(function(data) {
-            res.status(200).send(data);
-        });
+        .then(
+            function(data) {
+                res.status(200).send(data);
+            },
+            function(err) {
+                return err;
+            }
+        );
 });
 
 /**
