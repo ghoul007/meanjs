@@ -4,9 +4,16 @@ var auth = require("../middleware/auth");
 var api = require("../config/core");
 var exception = require("./APIError");
 
+
+
+
+
+
+
 /**
  * Get list of resource
  */
+
 router.post("/list_resource", function(req, res, next) {
     var resource = req.body.resource;
     var uuid = req.body.uuid;

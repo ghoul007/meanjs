@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const APP_SECRET = "process.env.jwtSecret";
+const APP_SECRET = "sfDFGDFggkdgdgdfgdfgk455fd65kgkdfg6dfg65dfg65df65gk";
 const USERNAME = "angus.dickens@example.org";
 const PASSWORD = "secret";
 
@@ -22,8 +22,8 @@ module.exports = function(req, res, next) {
             console.log("-------------");
             token = token.substring(7, token.length - 1);
             try {
-                console.log("2", token);
-                // jwt.verify(token, APP_SECRET);
+                console.log("verify Token", jwt.verify(token, APP_SECRET));
+                jwt.verify(token, APP_SECRET);
                 next();
                 return;
             } catch (err) {
