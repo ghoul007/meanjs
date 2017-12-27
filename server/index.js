@@ -49,7 +49,7 @@ if (env == "production") {
 
 app.use(routes);
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     console.log(res);
     var err = new Error("Not Found");
     err.status = 404;
@@ -57,7 +57,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
     if (err.name == "JWTExpressError") {
         // user is unauthorized
         res.status(401).send(err);

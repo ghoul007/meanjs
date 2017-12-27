@@ -6,7 +6,7 @@ var angularPath = path.resolve(__dirname, "../../dist");
 router.use(express.static(angularPath));
 
 /* GET home page. */
-router.get("*", function(req, res, next) {
+router.get("*", (req, res, next) => {
     if (req.url.startsWith("/cm")) return next();
     if (req.url.startsWith("/api")) return next();
 

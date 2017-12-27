@@ -1,7 +1,6 @@
 require("dotenv").config();
 var request = require('request');
 var values = require('object.values');
-var q = require('q');
 var settings = require('../helpers/settings');
 var except = require('../helpers/APIError');
 var api = module.exports;
@@ -11,30 +10,27 @@ var apiMapUrl = settings.api.map;
 var headers = {
     'content-type': 'application/json'
 };
-api.findResource = function(res, resource) {
+api.findResource = (res, resource) => {
 
-    var getUrl = function(resource, action) {
-        return apiUrl + apiMapUrl[resource][action].url;
-    };
+    var getUrl = (resource, action) => apiUrl + apiMapUrl[resource][action].url;
 
-    var getUrlParams = function(resource, action, uuid) {
-        var re = /<+\w+>/g;
-        var url = getUrl(resource, action);
+
+    var getUrlParams = (resource, action, uuid) => {
+        const re = /<+\w+>/g;
+        let url = getUrl(resource, action);
         return url.replace(re, uuid);
     };
 
-    var getUrlParamsQuery = function(resource, action, data) {
-        var re = /<+\w+>/g;
-        var url = getUrl(resource, action);
-        const searchParams = JSON.stringify(data).replace(/:/g, '=').replace(/,/g, '&').replace(/[{"}]/g, "")
+    var getUrlParamsQuery = (resource, action, data) => {
+        const re = /<+\w+>/g;
+        let url = getUrl(resource, action);
+        let searchParams = JSON.stringify(data).replace(/:/g, '=').replace(/,/g, '&').replace(/[{"}]/g, "")
         return url.replace(re, searchParams);
     };
 
-    var getMethod = function(resource, action) {
-        return apiMapUrl[resource][action].method;
-    };
+    var getMethod = (resource, action) => apiMapUrl[resource][action].method;
 
-    var call = function(action, res, data, uuid) {
+    var call = (action, res, data, uuid) => {
 
         var method, url, headers, response;
 
@@ -69,8 +65,8 @@ api.findResource = function(res, resource) {
             options.body = data;
         }
 
-        return new Promise(function(resolve, reject) {
-            request(options, function(error, response, body) {
+        return new Promise((resolve, reject) => {
+            request(options, (error, response, body) => {
                 if (!error && (response.statusCode == 200 || response.statusCode == 201)) {
                     var result = (typeof body == "string") ? JSON.parse(body) : body;
                     resolve(result);
@@ -88,7 +84,7 @@ api.findResource = function(res, resource) {
 };
 
 
-api.middleware = function(res, resource, action) {
+api.middleware = (res, resource, action) => {
     try {
         require(`../routes/api/${resource}/${resource}.routes`)[action](
             api,
@@ -99,15 +95,15 @@ api.middleware = function(res, resource, action) {
         except.customError(res, 500, 'ServerError', 'Oops ')
     }
 }
-api.setHeaders = function(key, value) {
+api.setHeaders = (key, value) => {
     headers[key] = value;
 };
 
-api.getHeaders = function() {
+api.getHeaders = () => {
     return headers;
 };
 
-api.setToken = function(token) {
+api.setToken = (token) => {
     headers['token'] = token;
 };
 

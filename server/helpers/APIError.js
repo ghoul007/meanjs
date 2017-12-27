@@ -1,7 +1,7 @@
 var express = require('express');
 
 module.exports = {
-    resourceNotFoundError: function(res, message) {
+    resourceNotFoundError: (res, message) => {
         return res
             .header("Content-Type", "application/json")
             .status(404)
@@ -10,7 +10,7 @@ module.exports = {
                 message: message || 'Resource not found !'
             });
     },
-    badRequestError: function(res, message) {
+    badRequestError: (res, message) => {
         return res
             .header("Content-Type", "application/json")
             .status(400)
@@ -19,7 +19,7 @@ module.exports = {
                 message: message || 'Missing Parameter(s) Error !'
             });
     },
-    conflictError: function(res, message) {
+    conflictError: (res, message) => {
         return res
             .header("Content-Type", "application/json")
             .status(409)
@@ -28,7 +28,7 @@ module.exports = {
                 message: message || 'Resource Conflict'
             });
     },
-    forbiddenError: function(res, message) {
+    forbiddenError: (res, message) => {
         return res
             .header("Content-Type", "application/json")
             .status(403)
@@ -37,7 +37,7 @@ module.exports = {
                 message: message || 'Forbidden Error!'
             });
     },
-    unauthorizedError: function(res, message) {
+    unauthorizedError: (res, message) => {
         return res
             .header("Content-Type", "application/json")
             .status(401)
@@ -46,7 +46,7 @@ module.exports = {
                 message: message || 'unauthorized Error!'
             });
     },
-    serverError: function(res, message) {
+    serverError: (res, message) => {
         return res
             .header("Content-Type", "application/json")
             .status(500)
@@ -55,7 +55,7 @@ module.exports = {
                 message: message || 'Server Error !'
             });
     },
-    customError: function(res, status, header, message) {
+    customError: (res, status, header, message) => {
         return res
             .header("Content-Type", "application/json")
             .status(status)
@@ -64,7 +64,7 @@ module.exports = {
                 message: message || 'Server Error !'
             });
     },
-    handleError: function(response, res) {
+    handleError: (response, res) => {
         if (response.statusCode == 401) {
             return null;
         } else if (response.statusCode == 404) {

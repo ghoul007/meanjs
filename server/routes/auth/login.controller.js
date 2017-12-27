@@ -5,7 +5,7 @@ var axios = require('axios');
 var JSONAPIError = require('jsonapi-serializer').Error;
 require("dotenv").config();
 
-var authError = function(message) {
+var authError = (message) => {
     return new JSONAPIError({
         status: 401,
         title: 'Invalid Authorization Parameters',
@@ -15,7 +15,7 @@ var authError = function(message) {
 
 var url = process.env.API;
 console.log("url", url);
-var authenticate = function(username, password, req, res, next) {
+var authenticate = (username, password, req, res, next) => {
     return axios.post(`${url}/authenticate`, {
             'username': username,
             'password': password
@@ -30,7 +30,7 @@ var authenticate = function(username, password, req, res, next) {
         })
 }
 
-var login = function(req, res, next) {
+var login = (req, res, next) => {
     var username = req.body.username;
     var password = req.body.password;
     console.log("usernae", username, password);
@@ -47,8 +47,8 @@ var login = function(req, res, next) {
     }
 };
 
-router.post('/login', login, function(req, res, next) {
-    req.session.save(function(err) {
+router.post('/login', login, (req, res, next) => {
+    req.session.save((err) => {
         var user = req.session.user;
         var userJSON = user;
         userJSON.exp = new Date().getTime() + 600;
