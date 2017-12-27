@@ -8,6 +8,7 @@ module.exports = {
     create: (api, uuid, data) => { movieController.create(api, uuid, data) },
     update: (api, uuid, data) => { movieController.update(api, uuid, data) },
     filter: (api, uuid, data) => { movieController.filter(api, uuid, data) },
-    delete: (api, uuid, data) => { movieController.delete(api, uuid, data) }
+    delete: (api, uuid, data) => { movieController.delete(api, uuid, data) },
+    example: (api, uuid, data) => { movieController.delete(api, uuid, data) }
 
 }

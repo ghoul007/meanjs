@@ -48,3 +48,9 @@ exports.test2 = (api, uuid, data) => {
     api.setHeaders("test2", "test2");
     console.log("Movie test2");
 };
+
+
+exports.example = (api, uuid, data) => {
+    api.setHeaders("test2", "test2");
+    console.log("Movie test2");
+};

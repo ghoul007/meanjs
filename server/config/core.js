@@ -4,7 +4,6 @@ var values = require('object.values');
 var settings = require('../helpers/settings');
 var except = require('../helpers/APIError');
 var api = module.exports;
-var fs = require('fs');
 var apiUrl = process.env.API
 var apiMapUrl = settings.api.map;
 var headers = {

@@ -15,6 +15,7 @@ import { PostComponent } from "./post/post.component";
 import { MovieComponent } from './movie/movie.component';
 import {MovieService} from './movie.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+
 const ROOT = [
   { path: "", redirectTo:"home", pathMatch:'full' },
   { path: "home", component: HomeComponent,  canActivate: [AuthGuardService] },

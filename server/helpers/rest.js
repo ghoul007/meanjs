@@ -12,9 +12,9 @@ var exception = require("./APIError");
 router.post("/list_resource", (req, res, next) => {
     const resource = req.body.resource;
     const uuid = req.body.uuid;
-    const action = "list";
+    let action = "list";
     setTokenHeader(req, api);
-    api.middleware(res, resource, action);
+    // api.middleware(res, resource, action);
     if (uuid) {
         action = "get_by_id";
         api
