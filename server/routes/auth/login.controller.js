@@ -5,6 +5,8 @@ var axios = require('axios');
 var JSONAPIError = require('jsonapi-serializer').Error;
 require("dotenv").config();
 
+
+ 
 var authError = (message) => {
     return new JSONAPIError({
         status: 401,

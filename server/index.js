@@ -50,7 +50,6 @@ if (env == "production") {
 app.use(routes);
 
 app.use((req, res, next) => {
-    console.log(res);
     var err = new Error("Not Found");
     err.status = 404;
     next(err);

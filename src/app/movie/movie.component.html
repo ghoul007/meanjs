@@ -1,5 +1,5 @@
-<p>
-    movie works!
-</p>
 
-{{movies|json}}
+
+<ul>
+  <li *ngFor="let movie of movies|async" >{{movie.id}}</li>
+</ul>

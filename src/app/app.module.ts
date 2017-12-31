@@ -1,33 +1,50 @@
-import { AuthGuardService } from './auth-guard.service';
-import { JwtModule } from './jwt/jwt.module';
-import { AuthService } from './auth.service';
-import { FormsModule } from '@angular/forms';
+import { JwtModule } from "./jwt/jwt.module";
+import { AuthService } from "./login/service/auth.service";
+import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { HttpModule } from "@angular/http";
-import { PostService } from "./post.service";
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-
+import { NgModule, isDevMode } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
-import { PostComponent } from "./post/post.component";
-import { MovieComponent } from './movie/movie.component';
-import {MovieService} from './movie.service';
-import { NotFoundComponent } from './not-found/not-found.component';
-
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { AuthGuardService } from "./jwt/guard/auth-guard.service";
+import { ICMStore, INIT_STATE, rootReducer } from "./root.reducer";
+import { NgRedux, NgReduxModule, DevToolsExtension } from 'ng2-redux';
 const ROOT = [
-  { path: "", redirectTo:"home", pathMatch:'full' },
-  { path: "home", component: HomeComponent,  canActivate: [AuthGuardService] },
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "home", component: HomeComponent, canActivate: [AuthGuardService] },
   { path: "login", component: LoginComponent },
-  { path: "post", component: PostComponent,  canActivate: [AuthGuardService]  },
-  { path: "movie", component: MovieComponent,  canActivate: [AuthGuardService]  },
-  { path: "**", component: NotFoundComponent  }
+  { path: "post", loadChildren: "app/post/post.module#PostModule" },
+  { path: "movie", loadChildren: "app/movie/movie.module#MovieModule" },
+  { path: "**", component: NotFoundComponent }
 ];
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, PostComponent, MovieComponent, NotFoundComponent],
-  imports: [BrowserModule, JwtModule, FormsModule, HttpModule, RouterModule.forRoot(ROOT) ],
-  providers: [PostService,AuthService , AuthGuardService, MovieService],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    NotFoundComponent
+  ],
+  imports: [
+    BrowserModule,
+    JwtModule,
+    FormsModule,
+    HttpModule,
+    NgReduxModule,
+    RouterModule.forRoot(ROOT)
+  ],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(
+    private ngRedux: NgRedux<ICMStore>,
+    private dev: DevToolsExtension
+  ) {
+    let enhancer = isDevMode() ? [dev.enhancer()] : [];
+    this.ngRedux.configureStore(rootReducer, INIT_STATE, [], enhancer);
+  }
+}

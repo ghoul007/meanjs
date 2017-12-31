@@ -1,10 +1,10 @@
-import { User } from "./User";
 import { BehaviorSubject, Observable } from "rxjs/Rx";
 import { Http, Headers, Response, RequestOptions } from "@angular/http";
 import { Injectable } from "@angular/core";
 import "rxjs/add/operator/map";
 import { JwtHelper } from "angular2-jwt";
-import { getToken, deleteToken } from "./jwt/jwt.module";
+import { getToken, deleteToken } from "../../jwt/jwt.module";
+import { User } from "../model/User";
 
 @Injectable()
 export class AuthService {
