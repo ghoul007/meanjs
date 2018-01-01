@@ -36,9 +36,9 @@ export class AuthService {
     let options = new RequestOptions({ headers: headers });
     return this.http
       .post(
-        "cm/login",
-        JSON.stringify({ username: username, password: password }),
-        options
+      "cm/login",
+      JSON.stringify({ username: username, password: password }),
+      options
       )
       .map(res => res.json())
       .toPromise()

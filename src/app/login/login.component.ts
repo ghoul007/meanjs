@@ -10,7 +10,7 @@ import { Component, OnInit } from "@angular/core";
 export class LoginComponent implements OnInit {
   model: any = {};
   error: string = "";
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.model = {

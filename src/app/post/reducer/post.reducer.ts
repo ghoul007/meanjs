@@ -10,7 +10,7 @@ export const INIT_POST_STATE: IPostState = {
 };
 
 class postImplementer {
-  constructor(private state: IPostState, private action) {}
+  constructor(private state: IPostState, private action) { }
 
   fetchPost() {
     return Object.assign({}, this.state, { posts: this.action.val });

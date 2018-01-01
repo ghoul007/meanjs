@@ -8,15 +8,15 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-   currentUser :any={};
-  constructor(private auth: AuthService, private _router:Router) {}
+  currentUser: any = {};
+  constructor(private auth: AuthService, private _router: Router) { }
 
 
-  logout(){
+  logout() {
     this.auth.logout();
     this._router.navigate(['/login']);
   }
-  
+
   ngOnInit() {
     this.auth.getUser().subscribe(res => {
       this.currentUser = res;

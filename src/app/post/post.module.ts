@@ -16,4 +16,4 @@ let routing = [
   declarations: [PostComponent],
   providers: [PostService]
 })
-export class PostModule {}
+export class PostModule { }

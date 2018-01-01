@@ -10,13 +10,13 @@ import { ICMStore } from "../../root.reducer";
   styleUrls: ["./add-movie.component.css"]
 })
 export class AddMovieComponent implements OnInit {
-  constructor(private movieService: MovieService, private redux: NgRedux<ICMStore>) {}
+  constructor(private movieService: MovieService, private redux: NgRedux<ICMStore>) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addMovie(movie) {
     this.movieService
       .addMovies(movie)
-      .subscribe(res => this.redux.dispatch({ type: CREATE_MOVIE , val: res }));
+      .subscribe(res => this.redux.dispatch({ type: CREATE_MOVIE, val: res }));
   }
 }

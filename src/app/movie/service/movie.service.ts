@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class MovieService {
-  constructor(private _http: Http) {}
+  constructor(private _http: Http) { }
 
   // getMovies() {
   //  return  this._http.get("/api/movies").map(res => res.json());
@@ -16,9 +16,9 @@ export class MovieService {
 
     return this._http
       .post(
-        "/api/list_resource",
-        JSON.stringify({ resource: "movie" }),
-        options
+      "/api/list_resource",
+      JSON.stringify({ resource: "movie" }),
+      options
       )
       .map(res => res.json());
   }
@@ -33,12 +33,12 @@ export class MovieService {
 
     return this._http
       .post(
-        "/api/create_resource",
-        JSON.stringify({
-          resource: "movie",
-          data: { name: name, description: "test" }
-        }),
-        options
+      "/api/create_resource",
+      JSON.stringify({
+        resource: "movie",
+        data: { name: name, description: "test" }
+      }),
+      options
       )
       .map(res => res.json());
   }
@@ -53,9 +53,9 @@ export class MovieService {
 
     return this._http
       .post(
-        "/api/delete_resource",
-        JSON.stringify({ resource: "movie", uuid: movie.id }),
-        options
+      "/api/delete_resource",
+      JSON.stringify({ resource: "movie", uuid: movie.id }),
+      options
       )
       .map(res => res.json());
   }

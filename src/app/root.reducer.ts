@@ -1,6 +1,6 @@
 import { INIT_MOVIE_STATE, movieReducer, IMovieState } from "./movie/reducer/movie.reducer";
 import { INIT_POST_STATE, postReducer, IPostState } from "./post/reducer/post.reducer";
-import { combineReducers} from "redux"
+import { combineReducers } from "redux"
 
 
 export interface ICMStore {

@@ -1,9 +1,9 @@
 {
     "authenticate": [{
         "id": "1",
-        "username": "Ahmed",
+        "username": "ahmed@gmail.com",
         "lastName": "Ghoul",
-        "email": "ahmed@test.com",
+        "email": "ahmed@gmail.com",
         "password": "Secret",
         "role": "admin"
     }]

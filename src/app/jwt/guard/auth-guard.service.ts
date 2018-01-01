@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthGuardService {
-  constructor(private authService_: AuthService, private router_: Router) {}
+  constructor(private authService_: AuthService, private router_: Router) { }
   public canActivate(): Observable<boolean> {
     return this.authService_.getUser()
       .map(loginIn => {

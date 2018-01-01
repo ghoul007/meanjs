@@ -34,4 +34,4 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     }
   ]
 })
-export class JwtModule {}
+export class JwtModule { }

@@ -8,9 +8,9 @@ describe('AddMovieComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddMovieComponent ]
+      declarations: [AddMovieComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

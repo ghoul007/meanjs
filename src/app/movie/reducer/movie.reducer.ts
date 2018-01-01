@@ -10,18 +10,18 @@ export const INIT_MOVIE_STATE: IMovieState = {
 };
 
 class movieImplementer {
-  constructor(private state: IMovieState, private action) {}
+  constructor(private state: IMovieState, private action) { }
 
   fetchMovie() {
     return Object.assign({}, this.state, { movies: this.action.val });
   }
 
   createMovie() {
-    return Object.assign({}, this.state, { movies: [this.action.val,...this.state.movies ] });
+    return Object.assign({}, this.state, { movies: [this.action.val, ...this.state.movies] });
   }
   deleteMovie() {
-    let listMovies =  this.state.movies.filter(res=> (res.id != this.action.val.id)) ;
-    return Object.assign({}, this.state, { movies:listMovies });
+    let listMovies = this.state.movies.filter(res => (res.id != this.action.val.id));
+    return Object.assign({}, this.state, { movies: listMovies });
   }
 }
 

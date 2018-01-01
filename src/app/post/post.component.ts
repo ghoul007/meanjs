@@ -17,14 +17,14 @@ export class PostComponent implements OnInit {
 
   @select((c: ICMStore) => c.post.posts) posts: IPost[];
 
-  constructor(private postService: PostService, private redux: NgRedux<ICMStore>) {}
+  constructor(private postService: PostService, private redux: NgRedux<ICMStore>) { }
 
   public ngOnInit(): void {
 
 
     this.postService.getPosts().subscribe(res => {
-    // this.posts = res;
-    this.redux.dispatch({ type: FETCH_POST , val : res });
+      // this.posts = res;
+      this.redux.dispatch({ type: FETCH_POST, val: res });
     });
   }
 }

@@ -16,4 +16,4 @@ let routing = [
   declarations: [MovieComponent, ListMovieComponent, AddMovieComponent],
   providers: [MovieService]
 })
-export class MovieModule {}
+export class MovieModule { }
