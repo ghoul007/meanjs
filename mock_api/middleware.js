@@ -22,8 +22,8 @@ module.exports = function(req, res, next) {
             console.log("-------------");
             token = token.substring(7, token.length - 1);
             try {
-                console.log("verify Token", jwt.verify(token, APP_SECRET));
-                jwt.verify(token, APP_SECRET);
+                // console.log("verify Token", jwt.verify(token, APP_SECRET));
+                // jwt.verify(token, APP_SECRET);
                 next();
                 return;
             } catch (err) {

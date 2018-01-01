@@ -16,8 +16,8 @@ const ROOT = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent, canActivate: [AuthGuardService] },
   { path: "login", component: LoginComponent },
-  { path: "post", loadChildren: "app/post/post.module#PostModule" },
-  { path: "movie", loadChildren: "app/movie/movie.module#MovieModule" },
+  { path: "post", loadChildren: "app/post/post.module#PostModule" , canActivate: [AuthGuardService]},
+  { path: "movie", loadChildren: "app/movie/movie.module#MovieModule" , canActivate: [AuthGuardService]},
   { path: "**", component: NotFoundComponent }
 ];
 

@@ -75,7 +75,7 @@ module.exports = {
         } else if (response.statusCode == 409) {
             return this.conflictError(res, response.body.message);
         } else if (response.statusCode == 403) {
-            deferred.reject(forbiddenError(res));
+            return this.unauthorizedError(res);
         } else if (response.statusCode == 500) {
             return this.serverError(res, response.body.message);
         }

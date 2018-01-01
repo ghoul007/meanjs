@@ -1,5 +1,5 @@
 import { IMovie } from "../model/movie";
-import { FETCH_MOVIE } from "../movie.action";
+import { CREATE_MOVIE, FETCH_MOVIE, DELETE_MOVIE } from '../movie.action';
 
 export interface IMovieState {
   movies?: IMovie[];
@@ -15,6 +15,14 @@ class movieImplementer {
   fetchMovie() {
     return Object.assign({}, this.state, { movies: this.action.val });
   }
+
+  createMovie() {
+    return Object.assign({}, this.state, { movies: [this.action.val,...this.state.movies ] });
+  }
+  deleteMovie() {
+    let listMovies =  this.state.movies.filter(res=> (res.id != this.action.val.id)) ;
+    return Object.assign({}, this.state, { movies:listMovies });
+  }
 }
 
 export const movieReducer = (
@@ -25,6 +33,10 @@ export const movieReducer = (
   switch (action.type) {
     case FETCH_MOVIE:
       return movieImpl.fetchMovie();
+    case CREATE_MOVIE:
+      return movieImpl.createMovie();
+    case DELETE_MOVIE:
+      return movieImpl.deleteMovie();
 
     default:
       return state;

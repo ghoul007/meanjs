@@ -1,0 +1,3 @@
+<ul>
+    <li *ngFor="let movie of movies|async">{{movie.name}} <button (click)="deleteMovie(movie)">delete</button> </li>
+</ul>
