@@ -6,7 +6,7 @@ var JSONAPIError = require('jsonapi-serializer').Error;
 require("dotenv").config();
 
 
- 
+
 var authError = (message) => {
     return new JSONAPIError({
         status: 401,
@@ -23,6 +23,9 @@ var authenticate = (username, password, req, res, next) => {
             'password': password
         })
         .then(function(data) {
+
+            if (!data.data.success)
+                return res.status(401).json(authError('Invalid username or password for user authentication.'));
             req.session.user = JSON.parse(data.config.data);
             req.session.tokenApi = data.data.token
             next();
